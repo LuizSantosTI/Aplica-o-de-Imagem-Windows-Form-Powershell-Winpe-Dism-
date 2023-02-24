@@ -1,0 +1,535 @@
+Add-Type -AssemblyName PresentationFramework
+Add-Type -AssemblyName System.Drawing
+
+[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
+
+[System.Windows.Forms.Application]::EnableVisualStyles()
+
+#Removendo possíveis variáveis salvas
+
+Remove-Variable * -ErrorAction SilentlyContinue
+
+
+#Removendo lixo eletrônico do conteudo do programa.
+
+if (test-path "x:\windows\system32\format.txt") {
+remove-item -force "x:\windows\system32\format.txt"
+}
+
+if (test-path "x:\windows\system32\apply.txt") {
+remove-item -force "x:\windows\system32\apply.txt"
+}
+
+if (test-path "x:\windows\system32\reset.txt") {
+remove-item -force "x:\windows\system32\reset.txt"
+}
+
+if (test-path "x:\windows\system32\dismlog.txt") {
+remove-item -force "x:\windows\system32\dismlog.txt"
+}
+
+
+
+
+
+
+#Formulario principal
+
+$FORM = New-Object System.Windows.Forms.Form 
+$FORM.Text = "Imagem v9.0"
+$FORM.Size = New-Object System.Drawing.Size(400,160) 
+$FORM.StartPosition = "CenterScreen"
+$FORM.FormBorderStyle = 'FixedDialog'
+$FORM.MaximizeBox = $false
+
+#Label de porcentagem
+
+$lblpc = new-object System.Windows.Forms.label
+$lblpc.Location = new-object System.Drawing.Size(345,35)
+$lblpc.Size = new-object System.Drawing.Size(150,20)
+$lblpc.visible = $false
+$lblpc.text = "0.0%"
+$lblpc.backcolor = 'transparent'
+$lblpc.Font  = [System.Drawing.Font]::new("Arial ",9)
+$FORM.controls.add($lblpc )
+
+#Label de autoria do projeto.
+
+$lblautoria = new-object System.Windows.Forms.label
+$lblautoria.Location = new-object System.Drawing.Size(245,95)
+$lblautoria.Size = new-object System.Drawing.Size(150,30)
+$lblautoria.visible = $true
+$lblautoria.enabled= $false
+$lblautoria.backcolor = 'transparent'
+$lblautoria.text = "Criado por:                                     Luiz Gustavo Queroga dos Santos    luizsantos.ti@outlook.com"
+$lblautoria.Font  = [System.Drawing.Font]::new("Arial ",7)
+$FORM.controls.add($lblautoria)
+
+#Label referente a informação do conteúdo do que está sendo execcutado no momento.
+
+$Labelimg = New-Object System.Windows.Forms.Label
+$labelimg.Font  = [System.Drawing.Font]::new("Microsoft Sans Serif", 9, [System.Drawing.FontStyle]::Bold)
+$Labelimg.Text = "Preparando    ... "
+$Labelimg.Location = New-Object System.Drawing.Point(70, 20)
+$Labelimg.Width = 190
+$Labelimg.Height = 20
+$labelimg.backcolor = 'transparent'
+$Labelimg.visible = $false
+$Labelimg.ForeColor = 'red'
+$form.Controls.Add($Labelimg)
+
+#Label do temporizador do reset da maquina após término.
+
+$LabelTime = New-Object System.Windows.Forms.Label
+$LabelTime.Font  = [System.Drawing.Font]::new("Microsoft Sans Serif", 7, [System.Drawing.FontStyle]::Bold)
+$LabelTime.Location = New-Object System.Drawing.Point(260, 23)
+$LabelTime.backcolor = 'transparent'
+$LabelTime.Width = 100
+$LabelTime.Height = 20
+$LabelTime.visible = $false
+$LabelTime.ForeColor = 'red'
+
+$form.Controls.Add($LabelTime)
+
+#Label da informação STATUS:
+
+$Labelstatus = New-Object System.Windows.Forms.Label
+$Labelstatus.Font  = [System.Drawing.Font]::new("Microsoft Sans Serif", 10, [System.Drawing.FontStyle]::Bold)
+$Labelstatus.Text = "Status:"
+$labelstatus.backcolor = 'transparent'
+$Labelstatus.Location = New-Object System.Drawing.Point(10, 20)
+$Labelstatus.Width = 60
+$Labelstatus.Height = 20
+$Labelstatus.visible = $false
+
+
+$form.Controls.Add($Labelstatus)
+
+
+#Botão para Localizar o arquivo .wim
+
+
+$WimButton = New-Object System.Windows.Forms.Button
+$WimButton.Location = New-Object System.Drawing.Size(308,60)
+$WimButton.Size = New-Object System.Drawing.Size(75,23)
+$WimButton.Text = "Procurar"
+$WimButton.enabled = $true
+
+$FORM.Controls.Add($WimButton)
+
+
+
+#Botão START
+
+$BtnIniciar = New-Object System.Windows.Forms.Button
+$BtnIniciar.Location = New-Object System.Drawing.Size(150,100)
+$BtnIniciar.Size = New-Object System.Drawing.Size(75,27)
+$BtnIniciar.Text = "Iniciar"
+$BtnIniciar.visible = $false
+$BtnIniciar.Font  = [System.Drawing.Font]::new("Arial ",9)
+$FORM.Controls.Add($BtnIniciar)
+
+
+
+
+#Textbox para receber o caminho do arquivo .wim
+
+$TextWim = new-object System.Windows.Forms.Textbox
+$TextWim.Location = new-object System.Drawing.Size(10,62)
+$TextWim.Size = new-object System.Drawing.Size(290,20)
+$TextWim.Text = ''
+$TextWim.autosize = $false
+$TextWim.WordWrap = $true
+$TextWim.ReadOnly = $TRUE
+$TextWim.backcolor = 'White'
+$TextWim.TabIndex = '2'
+$TextWim.Font  = [System.Drawing.Font]::new("Arial ",8)
+
+$FORM.controls.add($TextWim)
+
+
+#Label informando para localizar o conteudo do arquivo WIM.
+
+$lblWIM = new-object System.Windows.Forms.label
+$lblWIM.Location = new-object System.Drawing.Size(10,30)
+$lblWIM.Size = new-object System.Drawing.Size(310,18)
+$lblWIM.Text = 'Informe o caminho da imagem [.wim]'
+$lblwim.backcolor = 'transparent'
+$lblwim.forecolor = 'black'
+$lblWIM.Font  = [System.Drawing.Font]::new("Arial ",10, [System.Drawing.FontStyle]::Bold)
+$FORM.controls.add($lblWIM)
+$FORM.Add_Shown({$FORM.Activate()})
+
+
+
+# Condição caso o formulário seja fechado.
+
+if ($image -eq [System.Drawing.Font]::Cancel) {
+$null
+
+}
+
+
+
+# Função para obter o caminho do arquivo .wim GetfileBrowser, 
+
+ Function Get-Filewim  {
+
+$Foldername = New-Object System.Windows.Forms.OpenFileDialog -Property @{ 
+    InitialDirectory = [Environment]::GetFolderPath('Desktop') 
+     Filter = 'Imagem (*.WIM)|*.wim'
+     AUtoUpgradeEnabled = $false
+     
+
+}
+
+if ($Foldername.ShowDialog() -eq 'OK'){
+
+return $Foldername.filename
+    }
+}
+
+
+
+#Clicando no botao de procurar arquivo WIM
+
+$WimButton.add_click{
+
+$Getwim = get-filewim
+
+if ($getwim -eq $null) {
+
+} else {
+
+
+$TextWim.Text = "$Getwim"
+"$Getwim" > 'x:\windows\system32\local.txt'
+
+$BtnIniciar.visible = $true
+    }
+
+}
+
+
+
+# Função utilizada para iniciar ao clicar no botão START.
+
+Function Applyimg() {
+
+
+
+    $ProgressBarm = New-Object System.Windows.Forms.ProgressBar
+    $ProgressBarm.Location = New-Object System.Drawing.Point(10, 60)
+    $ProgressBarm.Size = New-Object System.Drawing.Size(375, 20)
+    $ProgressBarm.Style = "Marquee"
+    $ProgressBarm.visible = $false
+    $progressbarm.backcolor = 'black'
+    $ProgressBarm.MarqueeAnimationSpeed = 20
+    $form.Controls.Add($ProgressBarm)
+
+$ProgressBar = New-Object System.Windows.Forms.ProgressBar
+$ProgressBar.Location = New-Object System.Drawing.Point(10, 60)
+$ProgressBar.Size = New-Object System.Drawing.Size(375, 20)
+$ProgressBar.Maximum = 100
+$ProgressBar.visible = $false
+$form.Controls.Add($ProgressBar)
+
+
+$form.refresh()
+
+
+start-job -name JOBSCRIPT -scriptblock {
+
+
+
+
+$getwim = gc('x:\windows\system32\local.txt')
+
+
+
+#preparando VHD apenas para TESTES
+
+diskpart /s "x:\windows\system32\vhd.txt"
+
+start-sleep 5
+
+"teste" > x:\windows\system32\format.txt
+
+diskpart /s x:\windows\system32\format.txt
+
+
+start-sleep 5
+
+"apply" > x:\windows\system32\apply.txt
+
+Dism /apply-Image /ImageFile:"$GetWim" /index:1 /applyDir:W:\ >> x:\windows\system32\dismlog.txt
+
+start-sleep 1
+
+
+
+}
+
+
+$count = '100'
+Loop
+
+
+
+}
+
+
+#Clicando no botao paara iniciar Formatação
+
+$BtnIniciar.add_click( { Applyimg })
+
+
+#Função loop utilizada para uso do cáculo da porcentagem e alteração do label LabelIMG
+
+function Loop(){
+
+# Após iniciar a função applyimg é chamada a função loop para desabilitar e habilitar a próxima tela.
+
+$Labelstatus.visible = $true
+$Labelimg.visible = $true
+$TextWim.visible = $false
+$BtnIniciar.visible = $false
+$WimButton.visible = $false
+$lblWIM.visible = $false
+
+[System.Windows.Forms.Application]::DoEvents()
+
+
+# Definindo variaveis de cáculo.
+
+$totalline = 6
+$i = 0
+$ProgressBar.Value = 0
+
+
+# Loop rapido para que não trave a tela durante a execução.
+
+foreach ($pgsbarm in 1..30) {
+start-sleep -milliseconds 50
+[System.Windows.Forms.Application]::DoEvents()
+
+
+}
+
+
+#Loop While utilizado para contagem real da porcentagem.
+
+while($i -lt $count){
+
+
+[System.Windows.Forms.Application]::DoEvents()
+
+
+start-sleep -milliseconds 5
+
+
+$ProgressBar.Value = $i
+$ProgressBarm.visible = $true
+
+
+ if (test-path "x:\windows\system32\format.txt"){ 
+
+ $Labelimg.text = "Formatando disco    ... "
+
+
+ }  
+
+ 
+  if (test-path "x:\windows\system32\apply.txt"){ 
+
+   if (test-path "x:\windows\system32\format.txt"){ 
+
+remove-item -force "x:\windows\system32\format.txt"
+
+$Labelimg.text = "Aplicando Imagem . . ."
+$lblpc.visible = $true
+ }  
+
+ $ProgressBar.visible = $true
+ $ProgressBarm.visible = $false
+
+
+
+  #checando novamente se existe o aquivo format.txt
+
+ if (test-path "x:\windows\system32\format.txt"){ 
+
+remove-item -force "x:\windows\system32\format.txt"
+
+
+ }
+
+
+#Loop while utilizado para iniciar a aplicação da imagem apenas quando o dism tiver rodando.
+ 
+while (-not(test-path "x:\windows\system32\dismlog.txt")){
+
+start-sleep -milliseconds 100
+
+[System.Windows.Forms.Application]::DoEvents()
+
+}
+
+ [System.Windows.Forms.Application]::DoEvents()
+
+# Inicio das condições do calculos
+
+$line = Get-Content "x:\windows\system32\dismlog.txt" -tail 1
+
+
+$countline = get-content("x:\windows\system32\dismlog.txt")
+
+if($countline.count -le "204") {
+ if ($countline.count -ge $TotalLine) {
+	 $i++
+	 $TotalLine = $totalline + 2
+	  	 
+	 $ProgressBar.Value = $i
+ }
+ }
+
+if ( $line[0] -ne "["){
+
+
+} else {
+
+
+$lblpc.text = $line.substring(28,5)
+
+
+
+}
+
+#Fim das condições dos calculos.
+
+start-sleep -milliseconds 50
+
+
+
+[System.Windows.Forms.Application]::DoEvents()
+
+
+
+ } 
+ 
+
+ } 
+
+ $lblpc.text = "100.0%"
+
+ start-sleep 2
+
+ $form.refresh()
+
+
+
+  start-job -name Boot -scriptblock{
+
+    W:\Windows\system32\bcdboot W:\windows /s S: /f all
+  }
+
+
+  $Labelimg.text = "Criando Boot do Windows    ... "
+
+  $ProgressBarm.visible = $true
+  $ProgressBar.visible = $false
+  $lblpc.visible = $false
+  $form.refresh()
+
+   
+ foreach($time in 1..100){
+
+ start-sleep -milliseconds 50
+
+ [System.Windows.Forms.Application]::DoEvents()
+}
+
+
+ $Labelimg.text = "Reiniciando o computador    ... "
+
+ $LabelTime.visible = $true
+
+
+ #Loop utilizando para contagem de 10 segundos.
+
+ foreach($time in 1..130){
+
+ start-sleep -milliseconds 67
+
+  if ($time -eq 13) {
+
+ $LabelTime.text = "( 10 segundos )"
+ }
+
+ if ($time -eq 26) {
+
+ $LabelTime.text = "( 9 segundos )"
+ }
+
+  if ($time -eq 39) {
+
+ $LabelTime.text = "( 8 segundos )"
+ }
+
+  if ($time -eq 52) {
+
+ $LabelTime.text = "( 7 segundos )"
+ }
+
+  if ($time -eq 65) {
+
+ $labeltime.text = "( 6 segundos )"
+ }
+
+  if ($time -eq 78) {
+
+ $labeltime.text = "( 5 segundos )"
+ }
+
+  if ($time -eq 91) {
+
+ $labeltime.text = "( 4 segundos )"
+ }
+
+  if ($time -eq 104) {
+
+ $labeltime.text = "( 3 segundos )"
+ }
+
+  if ($time -eq 117) {
+
+ $labeltime.text = "( 2 segundos )"
+ }
+
+   if ($time -eq 130) {
+
+ $labeltime.text = "( 1 segundo )"
+ }
+
+ [System.Windows.Forms.Application]::DoEvents()
+}
+
+
+$form.refresh()
+start-sleep 1
+
+#Após finalizar a aplicação da imagem o winpe ira reiniciar a maquina.
+
+wpeutil reboot
+
+$form.close()
+
+}
+
+
+# Iniciando Formulario
+
+$image = $FORM.ShowDialog()
+
+
