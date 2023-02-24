@@ -4,6 +4,8 @@ Projeto criado em powershell, destinado aos técnios de TI, que precisam aplicar
 
 Obs:  Primeiramente, se faz necessário a utilização do arquivo criado em .wim.
 
+Download dos arquivos: https://1drv.ms/u/s!Aq27nnar-w41gQByjgD5QpheNbx-?e=czplHs
+
 Passo 1: Extrair os arquivos do repositório em sua máquina, a fim de preparar o boot.
 
 Passo 2: Utilizar o Rufus para criar o  disco de boot. (Winpecustom.iso).
@@ -21,6 +23,8 @@ Grato.
 luiz Gustavo Queroga dos Santos
 Analista de TI PL.
 luizsantos.ti@outlook.com
+
+
 
 
 
