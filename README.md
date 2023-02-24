@@ -8,7 +8,7 @@ Download dos arquivos: https://1drv.ms/u/s!Aq27nnar-w41gQByjgD5QpheNbx-?e=czplHs
 
 Passo 1: Extrair os arquivos do repositório em sua máquina, a fim de preparar o boot.
 
-Passo 2: Utilizar o Rufus para criar o  disco de boot. (Winpecustom.iso).
+Passo 2: Executar o Rufus para criar o  disco de boot. (Winpecustom.iso).
 
 Passo 3: Conectar o pendrive na máquina que deseja aplicar a imagem e dar o boot.
 
