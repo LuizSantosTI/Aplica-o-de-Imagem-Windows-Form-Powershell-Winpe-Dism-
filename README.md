@@ -6,11 +6,7 @@ Obs:  Primeiramente, se faz necessário a utilização do arquivo criado em .wim
 
 Download dos arquivos: https://1drv.ms/u/s!Aq27nnar-w41gQByjgD5QpheNbx-?e=czplHs
 
-![image](https://user-images.githubusercontent.com/126285028/221380187-49baa282-4400-4134-82d5-6e4e4a63b8a3.png)
-
 ![image](https://user-images.githubusercontent.com/126285028/222802375-b671e4a7-42da-489f-b851-884143b6666a.png)
-
-
 
 Passo 1: Extrair os arquivos do repositório em sua máquina, a fim de preparar o boot.
 
