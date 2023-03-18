@@ -4,7 +4,7 @@ Projeto criado em powershell, destinado aos técnios de TI, que precisam aplicar
 
 Obs:  Primeiramente, se faz necessário a utilização do arquivo criado em .wim.
 
-Download dos arquivos: https://1drv.ms/u/s!Aq27nnar-w41gQByjgD5QpheNbx-?e=czplHs
+Download dos arquivos: https://1drv.ms/f/s!Aq27nnar-w41h3b06tUChpDIt01j?e=6tptMk
 
 ![image](https://user-images.githubusercontent.com/126285028/225759861-1fc1a233-fe75-4c89-9e43-9c62d66f49fc.png)
 
