@@ -29,7 +29,6 @@ Ao abrir a janela do Programa, selecionar o arquivo .wim da imagem que criou-se 
 
 
 
-
 Obs: Após esse processo, a máquina ira realizar a formatação do disco principal e aplicar a imagem desejada.
 
 Espero que seja útil.
