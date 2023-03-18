@@ -21,11 +21,12 @@ Executar o Rufus para criar o  disco de boot. (Winpecustom.iso).
 
 Conectar o pendrive na máquina que deseja aplicar a imagem e dar o boot.
 
-# Paso 4:  
+# Passo 4:  
 
 Ao abrir a janela do Programa, selecionar o arquivo .wim da imagem que criou-se anteirormente.
 
-Após esse processo, a máquina ira realizar a formatação do disco principal e aplicar a imagem desejada.
+
+Obs: Após esse processo, a máquina ira realizar a formatação do disco principal e aplicar a imagem desejada.
 
 Espero que seja útil.
 
