@@ -23,11 +23,13 @@ Espero que seja útil.
 
 Grato.
 
-luiz Gustavo Queroga dos Santos
+Contato:
+
+Luiz Gustavo Queroga dos Santos
 
 Analista de TI Sr.
 
-luizsantos.ti@outlook.com
+E-mail: luizsantos.ti@outlook.com
 
 
 
