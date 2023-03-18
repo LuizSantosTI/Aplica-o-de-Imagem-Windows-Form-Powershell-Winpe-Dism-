@@ -25,7 +25,7 @@ Conectar o pendrive na máquina que deseja aplicar a imagem e dar o boot.
 
 Ao abrir a janela do Programa, selecionar o arquivo .wim da imagem que criou-se anteirormente.
 
-#Fim: 
+# Fim: 
 
 Após esse processo, a máquina ira realizar a formatação do disco principal e aplicar a imagem desejada.
 
