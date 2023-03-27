@@ -6,7 +6,7 @@ Obs:  Primeiramente, se faz necessário a utilização do arquivo criado em .wim
 
 Onedrive: Download dos arquivos: https://1drv.ms/f/s!Aq27nnar-w41h3b06tUChpDIt01j?e=6tptMk
 
-![image](https://user-images.githubusercontent.com/126285028/225759861-1fc1a233-fe75-4c89-9e43-9c62d66f49fc.png)
+![image](https://user-images.githubusercontent.com/126285028/228073048-ffcc4f7e-b207-47a3-a6d2-9f292adb717a.png)
 
 
 # Passo 1: 
